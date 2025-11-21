@@ -1,0 +1,7 @@
+{
+  "name": "Delta Stars Store",
+  "description": "A professional e-commerce store for Delta Stars, specializing in fresh fruits, vegetables, dates, and eggs in Saudi Arabia. The application features product galleries, a shopping cart, and detailed company information.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
