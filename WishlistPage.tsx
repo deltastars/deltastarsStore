@@ -2,7 +2,7 @@
 import React from 'react';
 import { Product, Page } from '../types';
 import { useI18n } from '../contexts/I18nContext';
-import { ShoppingCartIcon, TrashIcon } from './icons/Icons';
+import { ShoppingCartIcon, TrashIcon } from './lib/Icons';
 
 interface WishlistPageProps {
   wishlist: Product[];
