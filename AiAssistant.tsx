@@ -160,4 +160,39 @@ If you cannot answer a question or if the user wants to place an order, politely
 
       {/* Messages */}
       <div className="flex-1 p-4 overflow-y-auto bg-gray-100">
-        <div className="space
+        <div className="space-y-4">
+          {messages.map((msg, idx) => (
+            <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+              <div className={`max-w-xs px-4 py-2 rounded-lg ${msg.role === 'user' ? 'bg-blue-500 text-white' : 'bg-white text-gray-800'}`}>
+                <p className="text-sm">{msg.text}</p>
+              </div>
+            </div>
+          ))}
+          {isLoading && <TypingIndicator />}
+          <div ref={messagesEndRef} />
+        </div>
+      </div>
+
+      {/* Input Form */}
+      <form onSubmit={handleSendMessage} className="border-t p-4 bg-white">
+        <div className="flex gap-2">
+          <input
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder={t('aiAssistant.inputPlaceholder')}
+            className="flex-1 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            disabled={isLoading || status !== 'ready'}
+          />
+          <button
+            type="submit"
+            disabled={isLoading || !input.trim() || status !== 'ready'}
+            className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:opacity-50"
+          >
+            {t('aiAssistant.send')}
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+};
